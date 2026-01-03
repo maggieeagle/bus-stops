@@ -17,7 +17,12 @@ func sortRoutes(routes []models.Route) {
 }
 
 func findNextArrivals(arrivals []models.Arrival, limit int) []models.Arrival {
-	now := time.Now()
+	loc, err := time.LoadLocation("Europe/Tallinn")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	now := time.Now().In(loc) 
 	nowStr := now.Format("15:04:05")
 
 	var result []models.Arrival
