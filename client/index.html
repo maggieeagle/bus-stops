@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus routes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+<!--     <link rel="stylesheet" href="./sunny/jquery-ui.min.css"> -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="combobox.js"></script>
+    <script src="app.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>   -->
+  </head>
+  <body class="bg-primary-subtle py-4">
+      <header class="text-center mb-4 pb-3 border-bottom border-secondary">
+          <h1 class="display-5">Bus Routes</h1>
+          <span class="text-muted">across Estonia</span>
+      </header>
+
+      <div class="container">
+      <div class="mb-3 row align-items-end">
+        <div class="col-md-4">
+          <label for="region-combobox">Region:</label><br>
+          <select id="region-combobox"></select>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100 mt-3" id="region-combobox-button">Find stops</button>
+        </div>
+      </div>
+
+      <div class="mb-5 row align-items-end">
+        <div class="col-md-4">
+          <label for="stop-combobox">Bus Stop:</label><br>
+          <select id="stop-combobox"></select>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100 mt-3" id="stop-combobox-button">Find routes</button>
+        </div>
+      </div>
+
+      <div class="mb-4 d-flex flex-wrap gap-2" id="route-buttons-container"></div>
+
+      <div class="" id="route-name-container"></div>
+      <div class="mb-3 d-inline-flex flex-column gap-2 rounded" id="arrivals-container"></div>
+
+      <button class="btn btn-light d-block mt-1" id="clear-button">Clear all</button>
+    </div>
+  </body>
+</html>
