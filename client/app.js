@@ -1,3 +1,5 @@
+const serverURL = "routes-ehgqedhpa7h5cpff.westeurope-01.azurewebsites.net"
+
 $(function() {
     $("#region-combobox").combobox();
     $("#stop-combobox").combobox();
@@ -17,7 +19,7 @@ function syncCombobox($select) {
 
 // automatic prefill for region options
 $(function() {
-    $.get("http://127.0.0.1:8080/regions", function(data) {
+    $.get(`${serverURL}/regions`, function(data) {
         const $combobox = $("#region-combobox");
         
         $combobox.empty().append(
@@ -37,7 +39,7 @@ $(function() {
 function fillStops(region) {
     const $combobox = $("#stop-combobox");
 
-    const url = `http://127.0.0.1:8080/stops?region=${encodeURIComponent(region)}`;
+    const url = `${serverURL}/stops?region=${encodeURIComponent(region)}`;
 
     return $.get(url, function(data) {
         $combobox.empty().append(
@@ -110,7 +112,7 @@ $(document).on("click", "#stop-combobox-button", function() {
       return;
     }
 
-    const url = `http://127.0.0.1:8080/routes?stop=${encodeURIComponent(stop)}&code=${encodeURIComponent(code)}`;
+    const url = `${serverURL}/routes?stop=${encodeURIComponent(stop)}&code=${encodeURIComponent(code)}`;
 
    $.get(url, function(data) {
         fillRoutes(data)
@@ -140,9 +142,9 @@ $(document).on("click", ".route-button", function() {
 
     let url;
     if (code) {
-        url = `http://127.0.0.1:8080/arrivals?stop=${encodeURIComponent(stop)}&code=${encodeURIComponent(code)}&route=${encodeURIComponent(route)}`;
+        url = `${serverURL}/arrivals?stop=${encodeURIComponent(stop)}&code=${encodeURIComponent(code)}&route=${encodeURIComponent(route)}`;
     } else {
-        url = `http://127.0.0.1:8080/arrivals?stop=${encodeURIComponent(stop)}&route=${encodeURIComponent(route)}`;
+        url = `${serverURL}/arrivals?stop=${encodeURIComponent(stop)}&route=${encodeURIComponent(route)}`;
     }
 
    $.get(url, function(data) {
@@ -234,7 +236,7 @@ function selectStop(stop) {
 
 function findNearestStop(lat, lon) {
    $.ajax({
-    url: "http://127.0.0.1:8080/nearest_stop",
+    url: `${serverURL}/nearest_stop`,
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({ lat: "59.44672652334827", lon: "24.894330611091675" }),
