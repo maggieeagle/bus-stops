@@ -19,7 +19,7 @@ function syncCombobox($select) {
 
 // automatic prefill for region options
 $(function() {
-    $.get(`$https://{serverURL}/regions`, function(data) {
+    $.get(`https://${serverURL}/regions`, function(data) {
         const $combobox = $("#region-combobox");
         
         $combobox.empty().append(
